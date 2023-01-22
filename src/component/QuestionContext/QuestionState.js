@@ -5,7 +5,7 @@ import QuestionContext from "./QuestionContext";
 
 
 const QuestionState = (props) => {
-    const host = 'http://localhost:80';
+    const host = 'https://qcluster-backend.onrender.com';
     const [user_id,setUser]=useState("");
     
     const [question, setQuestion] = useState([]);
