@@ -21,7 +21,7 @@ export default function Register() {
     console.log("ruko dekhteh haiemail password sahi ai")
     // jaise hi submit pe click ho 
     // fetch se pata karo sahi hai login wale endpoint se
-    const response = await fetch('http://localhost:80/api/auth/register', {
+    const response = await fetch('https://qcluster-backends.onrender.com/api/auth/register', {
         method: 'POST',
         headers: {
 
