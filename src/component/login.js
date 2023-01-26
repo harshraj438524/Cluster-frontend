@@ -26,7 +26,7 @@ export default function Login() {
     }
     
     let reqOptions = {
-      url: `http://localhost:80/api/auth/${id}`,
+      url: `https://qcluster-backends.onrender.com/api/auth/${id}`,
       method: "PUT",
       headers: headersList,
     }
@@ -42,7 +42,7 @@ export default function Login() {
     setLoad(true)
     
     console.log("ruko dekhteh haiemail password sahi ai")
-    const response = await fetch('http://localhost:80/api/auth/login', {
+    const response = await fetch('https://qcluster-backends.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
 
