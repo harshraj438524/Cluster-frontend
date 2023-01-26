@@ -328,7 +328,7 @@ background-position: -3.7rem;
 .navbar{
   /* justify-content: space-around; */
   padding: 10px 15px;
-  background-color: #FAF8F1;
+  /* background-color: #FAF8F1; */
   box-shadow: 0 .5px 8px rgba(0,0,0,0.2);
   /* z-index: 100;
   align-items: center;
@@ -344,12 +344,13 @@ background-position: -3.7rem;
 
 }
 .main{
-  display: flex;
+  /* display: flex; */
   padding:  0 30px;
-  flex: 0.75;
+  /* flex: .4; */
   flex-direction: column;
   background: url('/src/component/Login2.jpg');
-  background-size: cover;
+  background-size: contain;
+  /* object-fit: cover; */
 }
 .container{
   background-color: rgba(250, 248, 241,.5);
@@ -591,5 +592,17 @@ flex-wrap: wrap;
 .center{
   display: flex;
   justify-content: center;
+
+}
+
+.nav-p{
+  font-family: 'Kavoon', cursive;
+  font-size: 2rem;
+  color: red;
+}
+.navbar{
+  background-color: #FFFBF5;
+  /* background-image: linear-gradient(to right,#FF8B13,#E8F9FD) */
+  /* background: rgba(255,255,255,.1); */
 
 }

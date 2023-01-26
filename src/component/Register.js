@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // import QuestionContext from './QuestionContext/QuestionContext'
+import loading from './Ellipsis.gif'
+
 
 
 
@@ -9,8 +11,12 @@ export default function Register() {
   // const {user_id,setUser}=context
   const navigate=useNavigate()
   const[credentials,setCredentials]=useState({name:"",email:"",password:""})
+  const [load, setLoad] = useState(false)
+
   const handleSubmit=async (e)=>{
     e.preventDefault();
+    setLoad(true)
+
     
     console.log("ruko dekhteh haiemail password sahi ai")
     // jaise hi submit pe click ho 
@@ -37,6 +43,7 @@ export default function Register() {
     // setUser(json.exist._id)
     // console.log(user_id);
     
+    setLoad(false)
     
     
 
@@ -50,13 +57,20 @@ const onChange=(e)=>{
   return (
    
         <div className='resister'>
-        <div className="cards2">
-            <div className="left2">
+
+       {load &&
+           (<div className="container-fluid text-center">
+           <img src={loading} alt="Loading" />
+
+        </div>)}
+        {!load &&  <div  className="cards2">
+        {!load &&  <div className="left2">
               <h1 className="tag" style={{fontSize:'80px'}}>Hello World</h1>
                 {/* <span className='mess'>Don't Have an account</span> */}
               {/* <button className='Resister my-5'>Resister</button> */}
-            </div>
-            <div className="right2">
+            </div>}
+
+           {!load &&  <div className="right2">
              <h1  className='text-center ll2'>Register</h1>
              <form className='formlogin2 my-4' onSubmit={handleSubmit}>
                 <input className='inputlogin2 ' type="text" placeholder='Username' name="name" onChange={onChange} value={credentials.name}/>
@@ -67,8 +81,8 @@ const onChange=(e)=>{
                 <Link className='Resister3 text-center' to="/">Login</Link>
 
              </form>
-            </div>
-        </div>
+            </div>}
+        </div>}
 
     
     </div>

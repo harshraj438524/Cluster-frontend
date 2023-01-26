@@ -10,7 +10,7 @@ function Textarea() {
   const [tags, settags] = useState([]);
   const [title,setTitle]=useState("");
   const context=useContext(QuestionContext)
-  const {addQuestion,question,setQuestion,user_id}=context
+  // const {addQuestion,question,setQuestion,user_id}=context
   
   // console.log(tags);
 
@@ -28,11 +28,7 @@ function Textarea() {
       
         method: 'POST',
         headers: {
-
-
-            'Content-Type': 'application/json',
-
-
+           'Content-Type': 'application/json',
         },
         
         body: JSON.stringify({title,tag:tags,body:text,user:s,username:q})
@@ -40,9 +36,9 @@ function Textarea() {
     });
     const json=await response.json();
     console.log(json.doc);
-    if(json.success){
+    
       navigate("/main")
-    }
+    
 
 
 

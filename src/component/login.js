@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import QuestionContext from './QuestionContext/QuestionContext'
 import axios from "axios";
+import loading from './Ellipsis.gif'
+// import loading from './DoubleRing.gif'
+
 
 
 export default function Login() {
@@ -10,18 +13,20 @@ export default function Login() {
   // const {user_id,setUser,setting}=context
   console.log(2)
   const [exi,setExist]=useState("")
+  const [load, setLoad] = useState(false)
 
   const[credentials,setCredentials]=useState({email:"",password:""})
 
 
   const activeuser=async(id)=>{
+    
 
     let headersList = {
      "Accept": "*/*",
     }
     
     let reqOptions = {
-      url: `https://qcluster-backends.onrender.com/api/auth/${id}`,
+      url: `http://localhost:80/api/auth/${id}`,
       method: "PUT",
       headers: headersList,
     }
@@ -34,9 +39,10 @@ export default function Login() {
 
   const handleSubmit=async (e)=>{
     e.preventDefault(); 
+    setLoad(true)
     
     console.log("ruko dekhteh haiemail password sahi ai")
-    const response = await fetch('https://qcluster-backends.onrender.com/api/auth/login', {
+    const response = await fetch('http://localhost:80/api/auth/login', {
         method: 'POST',
         headers: {
 
@@ -53,9 +59,11 @@ export default function Login() {
     console.log(json.exist._id);
     const p=json.exist._id
 
+
     const name=json.exist.name;
     
-console.log(p)
+    
+
 
     localStorage.setItem("user_id2",p)
  
@@ -66,7 +74,8 @@ console.log(p)
       await activeuser(p);
       navigate("/main")
     }
-    console.log(json.exist);
+    setLoad(false)
+    
 
     
 }
@@ -82,13 +91,20 @@ const onChange=(e)=>{
 
   return (
     <div className='Login'>
-        <div className="cards">
-            <div className="left">
+      {load &&
+        (<div className="container-fluid text-center">
+          <img src={loading} alt="Loading" />
+
+        </div>)}
+        
+        {!load && <div className="cards">
+      {!load &&  <div className="left">
               <h1 className="tag" style={{fontSize:'80px'}}>Hello World</h1>
                 <span className='mess'>Don't Have an account</span>
               {/* <button className='Resister my-5'>Resister</button> */}
-            </div>
-            <div className="right">
+            </div>}
+
+            {!load && <div className="right">
              <h1  className='text-center ll'>login</h1>
              <form className='formlogin my-3' >
                 <input className='inputlogin my-3' type="email" placeholder='Email' name='email' value={credentials.email} onChange={onChange} />
@@ -98,8 +114,11 @@ const onChange=(e)=>{
               <Link to='/reg' className='Resister2 text-center' >   Sign Up</Link>
              </form>
             </div>
+            }
         </div>
 
+          }
     </div>
+      
   )
 }

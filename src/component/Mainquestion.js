@@ -74,8 +74,8 @@ function MainQuestion() {
           </div>
           <div className="center">
           <div className="comments">
-            <h3 className="my-3">Comments</h3>
-            <div className="container ">
+          {(particular[0].comments.length==0)? '' :<h3 className="my-3">Comments</h3>}
+          {(particular[0].comments.length==0)? '' : <div className="container ">
               {particular && particular[0].comments.map((co) => (
                 <div className="comment">
                   <p>{co.comment}</p>
@@ -84,7 +84,7 @@ function MainQuestion() {
                 </div>
 
               ))}
-            </div>
+            </div>}
 
             <div className="entercomment">
               <h4 className="my-3">Add Comments</h4>
