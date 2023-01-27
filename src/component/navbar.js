@@ -21,7 +21,7 @@ let headersList = {
 }
 
 let reqOptions = {
-  url: `http://localhost:80/api/auth/logout/${id}`,
+  url: `https://qcluster-backends.onrender.com/api/auth/logout/${id}`,
   method: "PUT",
   headers: headersList,
 }
