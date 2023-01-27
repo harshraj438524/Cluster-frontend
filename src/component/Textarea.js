@@ -24,7 +24,7 @@ function Textarea() {
     let q=localStorage.getItem("user_name")
     
     // console.log(s)
-    const response = await fetch('http://localhost:80/api/question', {
+    const response = await fetch('https://qcluster-backends.onrender.com/api/question', {
       
         method: 'POST',
         headers: {
